@@ -1,0 +1,60 @@
+﻿@model IEnumerable<KPAWeb.Models.KPA>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>KPA Dashboard</h1>
+
+<Partial name="_Notification"></Partial>
+
+<p>
+    <div class="col-12 text-end">
+        <a class="btn btn-primary" asp-action="KPA_Create"><i class="bi bi-plus-circle"></i>&nbsp;Add New Kpa</a> <a class="btn btn-primary" asp-controller="KPIs" asp-action="KPI_Create"><i class="bi bi-plus-circle"></i>&nbsp;Add New Kpi</a>
+    </div>
+</p>
+@*@{
+    var count = 1;
+}*@
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KPA_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KPA_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weighting)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @count
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.KPA_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KPA_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weighting)
+            </td>
+                <td>
+                    <div>
+                        <a class="btn btn-primary" asp-action="KPA_Edit" asp-route-id="@item.KPA_No"> <i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                        <a class="btn btn-primary" asp-action="KPA_Details" asp-route-id="@item.KPA_No"><i class="bi bi-view-list"></i>&nbsp;Details</a>
+                        <a class="btn btn-danger" asp-action="KPA_Delete" asp-route-id="@item.KPA_No"><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                    </div>
+                </td>           
+        </tr>
+}
+    </tbody>
+</table>
+  

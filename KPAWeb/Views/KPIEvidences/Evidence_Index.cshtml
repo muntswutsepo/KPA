@@ -1,0 +1,103 @@
+﻿@model System.Collections.Generic.IEnumerable<KPAWeb.Models.KPIEvidence>
+@*@model List<KPAWeb.Models.KPI>*@
+@*@model IEnumerable<KPAWeb.Models.KPI>*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>KPI Evidence Dashboard</h1>
+
+<Partial name="_Notification"></Partial>
+
+<p>
+    <div class="col-12 text-end">
+        <a class="btn btn-sm btn-outline-secondary" asp-controller="KPAs" asp-action="KPA_Index"><i class="bi bi-back"></i>&nbsp;Back to KPA List</a>
+    </div>
+
+</p>
+@*@{
+    var count = 1;
+}*@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Evidence_No)                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KPI_Ref_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Months)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.End_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.No_Of_Days)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Own_Score)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Line_Manager_Score)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weighting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Final_Score)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @count
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Evidence_No)                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KPI_Ref_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Months)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_Of_Days)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Own_Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Line_Manager_Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weighting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Final_Score)
+            </td>
+            <td>
+                    <a class="btn btn-primary" asp-action="Evidence_Edit" asp-route-id="@item.Evidence_No"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                    <a class="btn btn-primary" asp-action="Evidence_Details" asp-route-id="@item.Evidence_No"><i class="bi bi-view-list"></i>&nbsp;Details</a>
+                    <a class="btn btn-danger" asp-action="Evidence_Delete" asp-route-id="@item.Evidence_No"><i class="bi bi-trash"></i>&nbsp;Delete</a>
+            </td>
+        </tr>
+       
+}
+    </tbody>
+</table>

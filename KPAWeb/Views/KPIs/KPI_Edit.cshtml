@@ -1,0 +1,60 @@
+﻿@model KPAWeb.Models.KPI
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>KPI</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="KPI_Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="KPI_No" />
+            @*<div class="form-group">
+                <label asp-for="KPI_No" class="control-label"></label>
+                <input asp-for="KPI_No" class="form-control" />
+                <span asp-validation-for="KPI_No" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                @*<label asp-for="KPA_Ref_No" class="control-label"></label>
+                <input asp-for="KPA_Ref_No" class="form-control" />
+                <span asp-validation-for="KPI_No" class="text-danger"></span>*@
+                <input type="hidden" asp-for="KPA_Ref_No" />
+            </div>
+            <div class="form-group">
+                <label asp-for="KPI_Description" class="control-label"></label>
+                <input asp-for="KPI_Description" class="form-control" />
+                <span asp-validation-for="KPI_Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weighting" class="control-label"></label>
+                <input asp-for="Weighting" class="form-control" />
+                <span asp-validation-for="Weighting" class="text-danger"></span>
+            </div>
+     @*       <div class="form-group">
+                <label asp-for="Total_Weight" class="control-label"></label>
+                <input asp-for="Total_Weight" class="form-control" />
+                <span asp-validation-for="Total_Weight" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Target" class="control-label"></label>
+                <input asp-for="Target" class="form-control" />
+                <span asp-validation-for="Target" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-sm btn-outline-secondary" asp-controller="KPIs" asp-action="KPI_Index" asp-route-KPA_No="@Model?.KPA_Ref_No"><i class="bi bi-back"></i>Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

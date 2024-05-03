@@ -1,0 +1,18 @@
+﻿@{
+
+    var total = TempData["total"];
+    var totalKPA = TempData["totalKPA"];
+    TempData.Keep("total");
+    TempData.Keep("totalKPA");
+
+
+}
+<div>
+    <br />
+    <br />
+    <h4>
+        Please note total weighting of KPI should be up to total number of your KPA which is @totalKPA. Your current total is @total
+
+    </h4>
+    <a class="btn btn-sm btn-outline-secondary" asp-controller="KPAs" asp-action="KPA_Index"><i class="bi bi-back"></i>Back to List</a>
+</div>

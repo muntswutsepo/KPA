@@ -1,0 +1,55 @@
+﻿@model KPAWeb.Models.KPI
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>KPI</h4>
+    <hr />
+    <dl class="table table-bordered table-striped">
+       @* <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KPI_No)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KPI_No)
+        </dd>*@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KPA_Ref_No)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KPA_Ref_No)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KPI_Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KPI_Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Weighting)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Weighting)
+        </dd>
+     @*   <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Total_Weight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Total_Weight)
+        </dd>*@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Target)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Target)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-controller="KPIEvidences" asp-action="Evidence_Index" asp-route-KPI_No="@Model?.KPI_No">View KPI Evidence</a>
+    @*<a asp-controller="KPIs" asp-action="Edit" asp-route-id="@Model?.KPA_Ref_No">Edit</a> |*@
+    <a class="btn btn-sm btn-outline-secondary" asp-controller="KPIs" asp-action="KPI_Index" asp-route-KPA_No="@Model?.KPA_Ref_No"><i class="bi bi-back"></i>Back to List</a>
+</div>

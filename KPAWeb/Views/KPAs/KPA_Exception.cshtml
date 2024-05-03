@@ -1,0 +1,14 @@
+﻿@{
+
+    var total = TempData["total"];
+    TempData.Keep("total");
+}
+<div>
+    <br />
+    <br />
+    <h4>
+        Please note total weighting of KPA should be up to 100. Your Current total is @total
+
+    </h4>
+    <a class="btn btn-sm btn-outline-secondary" asp-action="KPA_Index"><i class="bi bi-back"></i>Back to List</a>
+</div>

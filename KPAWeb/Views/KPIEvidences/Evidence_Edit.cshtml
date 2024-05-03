@@ -1,0 +1,79 @@
+﻿@model KPAWeb.Models.KPIEvidence
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>KPI</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Evidence_Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Evidence_No" />
+            @*<div class="form-group">
+                <label asp-for="KPI_No" class="control-label"></label>
+                <input asp-for="Evidence_No" class="form-control" />
+                <span asp-validation-for="Evidence_No" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="KPI_Ref_No" class="control-label"></label>
+                <input asp-for="KPI_Ref_No" class="form-control" />
+                <span asp-validation-for="Evidence_No" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Months" class="control-label"></label>
+                <input asp-for="Months" class="form-control" />
+                <span asp-validation-for="Months" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start_Date" class="control-label"></label>
+                <input asp-for="Start_Date" class="form-control" />
+                <span asp-validation-for="Start_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="End_Date" class="control-label"></label>
+                <input asp-for="End_Date" class="form-control" />
+                <span asp-validation-for="End_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="No_Of_Days" class="control-label"></label>
+                <input asp-for="No_Of_Days" class="form-control" />
+                <span asp-validation-for="No_Of_Days" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Own_Score" class="control-label"></label>
+                <input asp-for="Own_Score" class="form-control" />
+                <span asp-validation-for="Own_Score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Line_Manager_Score" class="control-label"></label>
+                <input asp-for="Line_Manager_Score" class="form-control" />
+                <span asp-validation-for="Line_Manager_Score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weighting" class="control-label"></label>
+                <input asp-for="Weighting" class="form-control" />
+                <span asp-validation-for="Weighting" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Final_Score" class="control-label"></label>
+                <input asp-for="Final_Score" class="form-control" />
+                <span asp-validation-for="Final_Score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-sm btn-outline-secondary" asp-controller="KPIEvidences" asp-action="Evidence_Index" asp-route-KPI_No="@Model?.KPI_Ref_No"><i class="bi bi-back"></i>Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

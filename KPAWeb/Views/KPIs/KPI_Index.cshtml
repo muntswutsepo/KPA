@@ -1,0 +1,83 @@
+﻿@model System.Collections.Generic.IEnumerable<KPAWeb.Models.KPI>
+@*@model List<KPAWeb.Models.KPI>*@
+@*@model IEnumerable<KPAWeb.Models.KPI>*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>KPI Dashboard</h1>
+
+<Partial name="_Notification"></Partial>
+
+<p>
+    <div class="col-12 text-end">
+        <a class="btn btn-sm btn-outline-secondary" asp-controller="KPAs" asp-action="KPA_Index" ><i class="bi bi-back"></i>&nbsp;Back to KPA List</a> <a class="btn btn-primary" asp-controller="KPIevidences" asp-action="Evidence_Create" ><i class="bi bi-plus-circle"></i>&nbsp;Add KPI Evidence</a>
+    </div>
+
+</p>
+@*@{
+    var count = 1;
+}*@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KPI_No)                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KPA_Ref_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KPI_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weighting)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.Total_Weight)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Target)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+          @* <td>
+                @count
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.KPI_No)                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KPA_Ref_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KPI_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weighting)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.Total_Weight)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Target)
+            </td>
+            <td>
+                    <a class="btn btn-primary" asp-action="KPI_Edit" asp-route-id="@item.KPI_No"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                    <a class="btn btn-primary" asp-action="KPI_Details" asp-route-kpaNo="@item.KPA_Ref_No"  asp-route-id="@item.KPI_No"><i class="bi bi-view-list"></i>&nbsp;Details</a>
+                    <a class="btn btn-danger" asp-action="KPI_Delete" asp-route-id="@item.KPI_No"><i class="bi bi-trash"></i>&nbsp;Delete</a>
+            </td>
+            </tr>
+            TempData["KPA_Ref_No"] = item.KPA_Ref_No;
+            TempData.Keep("KPA_Ref_No");
+
+            TempData["Weighting"] = item.Weighting;
+            TempData.Keep("Weighting");
+        }
+    </tbody>
+</table>
